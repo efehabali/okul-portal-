@@ -80,7 +80,7 @@ a {
   overflow: hidden;
   border: 1px solid #cbd5e1;
   background: var(--surface-strong);
-  font-size: 0.75rem;
+  color: var(--brand);
   font-weight: 700;
   white-space: pre-line;
   line-height: 1.2;
@@ -107,7 +107,9 @@ a {
   font-size: 0.78rem;
   color: var(--muted);
 }
- {
+
+.nav-links,
+.mobile-menu {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -115,9 +117,6 @@ a {
 }
 
 .mobile-menu {
-  display: none;
-  flex-wrap: wrap;
-  gap: 0.75rem
   display: none;
 }
 
@@ -170,14 +169,6 @@ a {
 
 .btn-secondary:hover {
   background: #e2e8f0;
-}
-
-.btn-sm {
-  padding: 0.75rem 1rem;
-}
-
-.btn-full {
-  width: 100%;
 }
 
 .hamburger {
@@ -328,53 +319,6 @@ a {
   display: none;
 }
 
-/* Subtle animations */
-@media (prefers-reduced-motion: no-preference) {
-  .page-section {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 360ms ease, transform 360ms ease;
-  }
-
-  .page-section.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  .card {
-    transition: transform 280ms ease, box-shadow 280ms ease;
-    will-change: transform;
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
-  }
-
-  .btn {
-    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
-  }
-
-  .hero-card {
-    transition: transform 420ms ease, opacity 420ms ease;
-  }
-
-  .mobile-menu {
-    transition: opacity 220ms ease, transform 220ms ease;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
 @media (min-width: 768px) {
   .header-inner {
     gap: 2rem;
@@ -404,99 +348,16 @@ a {
   }
 
   .mobile-menu {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 0.5rem;
-    padding: 0 1rem;
+    padding: 1rem 0;
     border-top: 1px solid rgba(148, 163, 184, 0.15);
-    background: var(--surface);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    transform-origin: top center;
-    opacity: 0;
-    transform: translateY(-8px);
-    pointer-events: none;
-    max-height: 0;
-    overflow: hidden;
   }
 
   .mobile-menu.open {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-    max-height: 480px;
-    padding: 1rem;
+    display: flex;
   }
-}
-
-/* Overlay when mobile menu open */
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.0);
-  pointer-events: none;
-  transition: background 220ms ease, opacity 220ms ease;
-  opacity: 0;
-  z-index: 25;
-}
-
-.menu-overlay.open {
-  background: rgba(2,6,23,0.16);
-  pointer-events: auto;
-  opacity: 1;
-}
-
-/* Compact mobile menu items */
-.mobile-link {
-  padding: 0.55rem 0.5rem;
-  font-size: 0.95rem;
-}
-
-/* Clock & calendar popup */
-.header-widgets {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-left: auto;
-  position: relative;
-}
-
-.clock-widget {
-  font-weight: 600;
-  color: var(--text);
-  font-size: 0.9rem;
-  padding: 0;
-  cursor: pointer;
-  white-space: nowrap;
-  position: relative;
-}
-
-.calendar-popup {
-  position: absolute;
-  right: -1rem;
-  top: 3rem;
-  width: 220px;
-  background: white;
-  border-radius: 12px;
-  padding: 0.75rem;
-  box-shadow: 0 10px 30px rgba(2,6,23,0.08);
-  border: 1px solid rgba(148,163,184,0.12);
-}
-
-.calendar-popup.hidden { display: none; }
-
-.cal-header { text-align:center; margin-bottom:8px; color:var(--text); }
-.cal-weekdays { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; font-size:11px; color:var(--muted); margin-bottom:6px }
-.cal-wd { text-align:center }
-.cal-days { display:grid; grid-template-columns:repeat(7,1fr); gap:6px }
-.cal-day { text-align:center; padding:6px 0; border-radius:6px; font-size:13px; color:var(--muted) }
-.cal-day.today { background:var(--brand); color:white; font-weight:700 }
-.cal-day.empty { background:transparent }
-
-@media (max-width: 767px) {
-  .header-widgets { display: none; }
 }
 
 .dark {
